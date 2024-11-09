@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:new_bloc_practice/feature/wishlist/ui/wishlist_page.dart';
 
+import '../../cart/ui/cart_page.dart';
 import '../bloc/home_bloc.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,14 +34,15 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: BlocConsumer<HomeBloc, HomeState>(
-        // listenWhen: (previous, current) {
-        //
-        // },
-        // buildWhen: (previous, current) {
-        //
-        // },
+        listenWhen: (previous, current) => current is HomeActionState,
+        buildWhen: (previous, current) => current is !HomeActionState,
         listener: (context, state) {
-
+          if(state is HomeNavigateToCartPage){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage()));
+          }
+          if(state is HomeNavigateToWishlistPage){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => WishlistPage()));
+          }
         },
         builder: (context, state) {
           return Container();
