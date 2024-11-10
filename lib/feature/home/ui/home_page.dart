@@ -38,10 +38,10 @@ class _HomePageState extends State<HomePage> {
         buildWhen: (previous, current) => current is !HomeActionState,
         listener: (context, state) {
           if(state is HomeNavigateToCartPage){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const CartPage()));
           }
           if(state is HomeNavigateToWishlistPage){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => WishlistPage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const WishlistPage()));
           }
         },
         builder: (context, state) {
