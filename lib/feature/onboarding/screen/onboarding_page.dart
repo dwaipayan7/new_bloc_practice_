@@ -33,12 +33,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
         builder: (context, state) {
           final pageIndex = (state as OnboardingPageState).pageIndex;
 
-          // Update page programmatically only if the controller is not currently animating
           if (_pageController.hasClients && _pageController.page != pageIndex) {
             _pageController.animateToPage(
               pageIndex,
               duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
+              curve: Curves.bounceInOut,
             );
           }
 
